@@ -14,7 +14,7 @@ public class FlyCommand extends Command {
     public boolean execute(Player player, String label, String[] args) {
         if(args.length == 0) {
             player.setAllowFlight(!player.getAllowFlight());
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (player.getAllowFlight() ? "&aenabled" : "&cdisabled") + "&r flight!"));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (player.getAllowFlight() ? "&aenabled" : "&cdisabled") + "&7 flight!"));
             return false;
         }
         Player argPlayer = Bukkit.getPlayer(args[0]);
