@@ -61,7 +61,11 @@ public class VanishCommand extends Command {
      * Update Vanish List
      * */
     private void updateVanished(Player player) {
-        Bukkit.getOnlinePlayers().forEach(player1 -> vanishedPlayers.forEach(player1::hidePlayer));
+        Bukkit.getOnlinePlayers().forEach(player1 -> vanishedPlayers.forEach(player2 -> {
+            if(!player1.hasPermission("nick.vanish.see")) {
+                player1.hidePlayer(player2);
+            }
+        }));
         vanishedPlayers.remove(player);
     }
 
