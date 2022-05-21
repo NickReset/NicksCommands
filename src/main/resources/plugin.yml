@@ -1,0 +1,7 @@
+name: NicksCommands
+version: '${project.version}'
+main: me.nickrest.Plugin
+api-version: 1.15
+commands:
+  fly:
+    usage: /<command>
