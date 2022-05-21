@@ -22,33 +22,14 @@ public class VanishCommand extends Command {
     public boolean execute(Player player, String label, String[] args) {
         if(args.length == 0) {
             if(vanishedPlayers.contains(player)) {
-                player.sendMessage("§cYou are no longer vanished.");
-                Bukkit.getOnlinePlayers().forEach(player1 -> player1.showPlayer(player));
+                hidePlayer(player);
+                player.sendMessage("§aYou are now visible.");
                 return true;
             }
-            player.sendMessage("§cYou are now vanished.");
-            hidePlayer(player);
-            vanishedPlayers.add(player);
+            updateVanished(player);
+            player.sendMessage("§aYou are now invisible.");
             return true;
         }
-        updateVanished(player);
-
-        Player argPlayer = Bukkit.getPlayer(args[0]);
-
-        if(argPlayer == null) {
-            player.sendMessage("§cPlayer not found!");
-            return true;
-        }
-
-        if(vanishedPlayers.contains(argPlayer)) {
-            player.sendMessage("§c" + argPlayer.getName() + " is no longer vanished.");
-            Bukkit.getOnlinePlayers().forEach(player1 -> player1.showPlayer(argPlayer));
-            vanishedPlayers.remove(argPlayer);
-            return true;
-        }
-        player.sendMessage("§c" + argPlayer.getName() + " is no longer vanished.");
-        hidePlayer(argPlayer);
-        vanishedPlayers.add(argPlayer);
         return false;
     }
 
@@ -58,7 +39,8 @@ public class VanishCommand extends Command {
                 player1.hidePlayer(player);
             }
         });
-        player.setPlayerListName("§7" + player.getDisplayName() + " §6[&7V&6]");
+        player.setPlayerListName("§7" + player.getDisplayName() + " §6[§7V§6]");
+        vanishedPlayers.add(player);
     }
 
     /**

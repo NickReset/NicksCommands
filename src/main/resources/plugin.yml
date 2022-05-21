@@ -7,3 +7,5 @@ commands:
     description: Allows you to fly
   vanish:
     description: Allows you to vanish
+    aliases:
+      - v
