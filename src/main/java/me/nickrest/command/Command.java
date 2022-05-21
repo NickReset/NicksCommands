@@ -5,6 +5,7 @@ import lombok.Setter;
 import me.nickrest.Plugin;
 import me.nickrest.command.info.CommandInfo;
 import me.nickrest.command.manager.CommandManager;
+import me.nickrest.event.Event;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -47,5 +48,8 @@ public abstract class Command  implements CommandExecutor{
     }
 
     public abstract boolean execute(Player player, String label, String[] args);
+
+    /* Command Events */
+    public void onEvent(Event event) {}
 
 }

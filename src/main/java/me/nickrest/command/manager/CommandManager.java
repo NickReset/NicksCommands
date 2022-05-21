@@ -16,17 +16,14 @@ public class CommandManager {
 
     private List<Command> commands = new ArrayList<>();
 
-    /* Commands that might use events */
-    private VanishCommand vanishCommand;
-
     public CommandManager() {
         registerCommand(new FlyCommand());
-        registerCommand(vanishCommand = new VanishCommand());
+        registerCommand(new VanishCommand());
         commands.forEach(Command::register);
     }
 
     public void onEvent(Event event) {
-        vanishCommand.onEvent(event);
+        commands.forEach(command -> command.onEvent(event));
     }
 
     public void registerCommand(Command command) {
