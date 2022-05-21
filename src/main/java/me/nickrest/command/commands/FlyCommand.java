@@ -12,7 +12,7 @@ public class FlyCommand extends Command {
 
     public boolean execute(Player player, String label, String[] args) {
         player.setAllowFlight(!player.getAllowFlight());
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (player.getAllowFlight() ? "&aenabled" : "&cdisabled") + " flight!"));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (player.getAllowFlight() ? "&aenabled" : "&cdisabled") + "&r flight!"));
         return false;
     }
 }
