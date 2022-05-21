@@ -31,7 +31,7 @@ public abstract class Command  implements CommandExecutor{
     }
 
     public boolean onCommand(@NotNull CommandSender sender, org.bukkit.command.@NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if(!sender.hasPermission(permission)) {
+        if(!sender.hasPermission(permission) && !permission.equalsIgnoreCase("")) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cYou do not have permission to use this command!"));
             return true;
         }
@@ -47,4 +47,5 @@ public abstract class Command  implements CommandExecutor{
     }
 
     public abstract boolean execute(Player player, String label, String[] args);
+
 }

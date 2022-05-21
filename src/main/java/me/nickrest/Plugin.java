@@ -2,6 +2,7 @@ package me.nickrest;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.nickrest.command.commands.VanishCommand;
 import me.nickrest.command.manager.CommandManager;
 import me.nickrest.event.Event;
 import me.nickrest.event.events.EventQuit;
@@ -23,7 +24,7 @@ public final class Plugin extends JavaPlugin {
     }
 
     public void onEvent(Event event) {
-
+        commandManager.onEvent(event);
     }
 
 }
