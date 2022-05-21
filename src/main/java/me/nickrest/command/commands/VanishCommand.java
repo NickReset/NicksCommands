@@ -26,7 +26,7 @@ public class VanishCommand extends Command {
                 player.sendMessage("§aYou are now visible.");
                 return true;
             }
-            updateVanished(player);
+            showPlayer(player);
             player.sendMessage("§aYou are now invisible.");
             return true;
         }
@@ -43,6 +43,12 @@ public class VanishCommand extends Command {
         vanishedPlayers.add(player);
     }
 
+    private void showPlayer(Player player) {
+        Bukkit.getOnlinePlayers().forEach(player1 -> player1.showPlayer(player));
+        player.setPlayerListName(player.getDisplayName());
+        vanishedPlayers.remove(player);
+    }
+
     /**
      * Called when a player joins the server
      * Hides every vanished players
@@ -55,8 +61,8 @@ public class VanishCommand extends Command {
      * Update Vanish List
      * */
     private void updateVanished(Player player) {
-        vanishedPlayers.forEach(player1 -> player1.showPlayer(player));
-        player.setPlayerListName(player.getDisplayName());
+        Bukkit.getOnlinePlayers().forEach(player1 -> vanishedPlayers.forEach(player1::hidePlayer));
+        vanishedPlayers.remove(player);
     }
 
     public void onEvent(Event event) {
@@ -66,7 +72,8 @@ public class VanishCommand extends Command {
             if(player.hasPermission("nick.vanish.see")) {
                 return;
             }
-            hideAllVanished(e.getPlayer());
+            hideAllVanished(player);
+            updateVanished(e.getPlayer());
         }
     }
 }
