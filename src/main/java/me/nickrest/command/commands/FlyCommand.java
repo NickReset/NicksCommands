@@ -23,7 +23,7 @@ public class FlyCommand extends Command {
             return false;
         }
         argPlayer.setAllowFlight(!argPlayer.getAllowFlight());
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (argPlayer.getAllowFlight() ? "&aenabled" : "&cdisabled") + "&r flight for &7" + argPlayer.getName() + "&r!"));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (argPlayer.getAllowFlight() ? "&aenabled" : "&cdisabled") + "&7 flight for " + argPlayer.getName() + "&7!"));
 
         return false;
     }
