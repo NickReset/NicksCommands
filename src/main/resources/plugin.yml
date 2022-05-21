@@ -4,5 +4,4 @@ main: me.nickrest.Plugin
 api-version: 1.15
 commands:
   fly:
-    usage: /<fly>
     description: Allows you to fly
