@@ -43,27 +43,11 @@ public class VanishCommand extends Command {
         vanishedPlayers.forEach(player1 -> player1.hidePlayer(player));
     }
 
-    /**
-     * Update Vanish List
-     * */
-    private void updateVanished(Player player) {
-        Bukkit.getOnlinePlayers().forEach(player1 -> vanishedPlayers.forEach(player2 -> {
-            if(!player1.hasPermission("nick.vanish.see")) {
-                player1.hidePlayer(player2);
-            }
-        }));
-        vanishedPlayers.remove(player);
-    }
-
     public void onEvent(Event event) {
         if(event instanceof EventJoin) {
             EventJoin e = (EventJoin) event;
             Player player = e.getPlayer();
-            if(player.hasPermission("nick.vanish.see")) {
-                return;
-            }
             hideAllVanished(player);
-            updateVanished(e.getPlayer());
         }
     }
 }
