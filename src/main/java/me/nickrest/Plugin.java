@@ -11,7 +11,6 @@ public final class Plugin extends JavaPlugin {
 
     public void onEnable() {
         instance = this;
-
     }
 
 }
