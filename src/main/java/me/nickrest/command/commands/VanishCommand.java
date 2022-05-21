@@ -21,32 +21,18 @@ public class VanishCommand extends Command {
 
     public boolean execute(Player player, String label, String[] args) {
         if(args.length == 0) {
-            if(vanishedPlayers.contains(player)) {
-                hidePlayer(player);
+            if(!vanishedPlayers.contains(player)) {
+                Bukkit.getOnlinePlayers().forEach(p -> p.hidePlayer(player));
+                vanishedPlayers.add(player);
                 player.sendMessage("§aYou are now visible.");
                 return true;
             }
-            showPlayer(player);
-            player.sendMessage("§aYou are now invisible.");
+            Bukkit.getOnlinePlayers().forEach(p -> p.showPlayer(player));
+            vanishedPlayers.remove(player);
+            player.sendMessage("§aYou are no longer invisible.");
             return true;
         }
         return false;
-    }
-
-    private void hidePlayer(Player player) {
-        Bukkit.getOnlinePlayers().forEach(player1 -> {
-            if(!player1.hasPermission("nick.vanish.see")) {
-                player1.hidePlayer(player);
-            }
-        });
-        player.setPlayerListName("§7" + player.getDisplayName() + " §6[§7V§6]");
-        vanishedPlayers.add(player);
-    }
-
-    private void showPlayer(Player player) {
-        Bukkit.getOnlinePlayers().forEach(player1 -> player1.showPlayer(player));
-        player.setPlayerListName(player.getDisplayName());
-        vanishedPlayers.remove(player);
     }
 
     /**
