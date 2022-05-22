@@ -6,8 +6,6 @@ import me.nickrest.command.Command;
 import me.nickrest.command.info.CommandInfo;
 import me.nickrest.event.Event;
 import me.nickrest.event.events.EventJoin;
-import me.nickrest.event.events.EventQuit;
-import me.nickrest.util.NameTagEdit;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -28,7 +26,6 @@ public class VanishCommand extends Command {
                         p.hidePlayer(player);
                     }
                     player.setPlayerListName("§8[§cVanished§8] §7" + player.getName());
-                    NameTagEdit.setNameTag(player, "§8[§cVanished§8] §7" + player.getName());
                 });
                 vanishedPlayers.add(player);
                 player.sendMessage("§aYou are now visible.");
@@ -37,7 +34,6 @@ public class VanishCommand extends Command {
             Bukkit.getOnlinePlayers().forEach(p -> {
                 p.showPlayer(player);
                 player.setPlayerListName(player.getDisplayName());
-                NameTagEdit.removeNameTag(player);
             });
             vanishedPlayers.remove(player);
             player.sendMessage("§aYou are no longer invisible.");
