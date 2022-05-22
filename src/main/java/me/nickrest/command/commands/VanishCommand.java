@@ -26,7 +26,7 @@ public class VanishCommand extends Command {
                     if(!p.hasPermission("nick.vanish.see")) {
                         p.hidePlayer(player);
                     }
-                    player.setPlayerListName("§8[§cVanished§8] §7" + p.getName());
+                    player.setPlayerListName("§8[§cVanished§8] §7" + player.getName());
                 });
                 vanishedPlayers.add(player);
                 player.sendMessage("§aYou are now visible.");
