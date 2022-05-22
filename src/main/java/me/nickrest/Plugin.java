@@ -24,6 +24,7 @@ public final class Plugin extends JavaPlugin {
         instance = this;
         commandManager = new CommandManager();
         addListener(new Listeners());
+
     }
 
     public void onEvent(Event event) {
