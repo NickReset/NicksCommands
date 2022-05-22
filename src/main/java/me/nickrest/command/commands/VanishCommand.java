@@ -37,7 +37,7 @@ public class VanishCommand extends Command {
             Bukkit.getOnlinePlayers().forEach(p -> {
                 p.showPlayer(player);
                 player.setPlayerListName(player.getDisplayName());
-                NameTagEdit.setNameTag(player, player.getDisplayName());
+                NameTagEdit.removeNameTag(player);
             });
             vanishedPlayers.remove(player);
             player.sendMessage("§aYou are no longer invisible.");
