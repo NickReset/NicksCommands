@@ -3,6 +3,8 @@ version: '${project.version}'
 main: me.nickrest.Plugin
 api-version: 1.15
 commands:
+  ban:
+    description: Ban a player
   fly:
     description: Allows you to fly
   vanish:
