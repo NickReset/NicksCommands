@@ -34,5 +34,4 @@ public final class Plugin extends JavaPlugin {
     private void addListener(Listener listener) {
         getServer().getPluginManager().registerEvents(listener, this);
     }
-
 }
