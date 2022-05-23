@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.nickrest.Plugin;
 import me.nickrest.command.Command;
+import me.nickrest.command.commands.BanCommand;
 import me.nickrest.command.commands.FlyCommand;
 import me.nickrest.command.commands.VanishCommand;
 import me.nickrest.event.Event;
@@ -19,6 +20,7 @@ public class CommandManager {
     public CommandManager() {
         registerCommand(new FlyCommand());
         registerCommand(new VanishCommand());
+        registerCommand(new BanCommand());
         commands.forEach(Command::register);
     }
 
