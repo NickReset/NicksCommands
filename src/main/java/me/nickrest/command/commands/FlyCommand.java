@@ -11,7 +11,9 @@ import org.jetbrains.annotations.NotNull;
 @CommandInfo(name = "fly", permission = "nick.fly")
 public class FlyCommand extends Command {
 
-    public boolean execute(Player player, String label, String[] args) {
+    public boolean execute(CommandSender sender, String label, String[] args) {
+        Player player = (Player) sender;
+
         if(args.length == 0) {
             player.setAllowFlight(!player.getAllowFlight());
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7You have " + (player.getAllowFlight() ? "&aenabled" : "&cdisabled") + "&7 flight!"));

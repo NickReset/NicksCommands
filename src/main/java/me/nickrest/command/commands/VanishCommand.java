@@ -7,6 +7,7 @@ import me.nickrest.command.info.CommandInfo;
 import me.nickrest.event.Event;
 import me.nickrest.event.events.EventJoin;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -18,7 +19,9 @@ public class VanishCommand extends Command {
 
     private List<Player> vanishedPlayers = new ArrayList<>();
 
-    public boolean execute(Player player, String label, String[] args) {
+    public boolean execute(CommandSender sender, String label, String[] args) {
+        Player player = (Player) sender;
+
         if(args.length == 0) {
             if(!vanishedPlayers.contains(player)) {
                 Bukkit.getOnlinePlayers().forEach(p -> {

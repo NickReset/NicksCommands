@@ -36,18 +36,19 @@ public abstract class Command  implements CommandExecutor{
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cYou do not have permission to use this command!"));
             return true;
         }
-        if(!(sender instanceof Player)) {
+        if(!(sender instanceof Player) && !info.console()) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cYou must be a player to use this command!"));
             return true;
         }
-        return execute((Player) sender, label, args);
+        assert sender instanceof Player;
+        return execute(sender, label, args);
     }
 
     public void register() {
         Objects.requireNonNull(Plugin.getInstance().getCommand(name)).setExecutor(this);
     }
 
-    public abstract boolean execute(Player player, String label, String[] args);
+    public abstract boolean execute(CommandSender sender, String label, String[] args);
 
     /* Command Events */
     public void onEvent(Event event) {}
